@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { lusitana } from '@/app/ui/fonts';
+import { lusitana } from "@/app/ui/fonts";
 import {
   AtSymbolIcon,
   KeyIcon,
   ExclamationCircleIcon,
   UserIcon,
-} from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import { ArrowRightIcon } from '@heroicons/react/20/solid';
-import { Button } from './button';
-import { useFormState, useFormStatus } from 'react-dom';
-import { signUp } from '@/app/lib/actions';
+} from "@heroicons/react/24/outline";
+import Link from "next/link";
+import { ArrowRightIcon } from "@heroicons/react/20/solid";
+import { Button } from "./button";
+import { useFormState, useFormStatus } from "react-dom";
+import { signUp, SignUpState } from "@/app/lib/actions";
 
 export default function SignUpForm() {
-  const initialState = { message: null, errors: {} };
+  const initialState: SignUpState = { message: null, errors: {} };
   const [state, dispatch] = useFormState(signUp, initialState);
 
   return (
@@ -25,7 +25,8 @@ export default function SignUpForm() {
           <div>
             <label
               className="mb-3 mt-5 block text-xs font-medium text-gray-900"
-              htmlFor="name">
+              htmlFor="name"
+            >
               Name
             </label>
             <div className="relative">
@@ -43,7 +44,8 @@ export default function SignUpForm() {
           <div>
             <label
               className="mb-3 mt-5 block text-xs font-medium text-gray-900"
-              htmlFor="email">
+              htmlFor="email"
+            >
               Email
             </label>
             <div className="relative">
@@ -62,7 +64,8 @@ export default function SignUpForm() {
           <div className="mt-4">
             <label
               className="mb-3 mt-5 block text-xs font-medium text-gray-900"
-              htmlFor="password">
+              htmlFor="password"
+            >
               Password
             </label>
             <div className="relative">
@@ -82,7 +85,8 @@ export default function SignUpForm() {
           <div className="mt-4">
             <label
               className="mb-3 mt-5 block text-xs font-medium text-gray-900"
-              htmlFor="confirmpassword">
+              htmlFor="confirmpassword"
+            >
               Confirm Password
             </label>
             <div className="relative">
@@ -101,7 +105,8 @@ export default function SignUpForm() {
             <div
               id="confirmpassword-error"
               aria-live="polite"
-              aria-atomic="true">
+              aria-atomic="true"
+            >
               {state?.errors?.confirmpassword &&
                 state.errors.confirmpassword.map((error: string) => (
                   <p className="mt-2 text-sm text-red-500" key={error}>
@@ -118,7 +123,8 @@ export default function SignUpForm() {
         <div
           className="flex h-8 items-end space-x-1"
           aria-live="polite"
-          aria-atomic="true">
+          aria-atomic="true"
+        >
           {state?.message && (
             <>
               <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
