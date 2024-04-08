@@ -1,6 +1,5 @@
 import Logo from "@/app/ui/logo";
 import LoginForm from "@/app/ui/login-form";
-import GoogleLoginButton from "@/app/ui/google-login-button";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -17,7 +16,6 @@ export default function LoginPage() {
           </div>
         </div>
         <LoginForm />
-        <GoogleLoginButton />
       </div>
     </main>
   );
