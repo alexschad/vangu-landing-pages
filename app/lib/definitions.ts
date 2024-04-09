@@ -8,3 +8,19 @@ export type User = {
   email: string;
   password: string;
 };
+
+export type PagesTable = {
+  id: string;
+  user_id: string;
+  title: string;
+  html: string;
+  date: string;
+  state: "draft" | "published";
+};
+
+export type PageForm = {
+  id: string;
+  user_id: string;
+  title: string;
+  html: string;
+};

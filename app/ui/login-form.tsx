@@ -23,7 +23,7 @@ export default function LoginForm() {
           Please log in to continue.
         </h1>
         <p className="text-sm">
-          Need an Account? Create it <Link href="/signup">here</Link>
+          Need an Account? <Link href="/signup">Create it here</Link>
         </p>
         <div className="w-full">
           <div>

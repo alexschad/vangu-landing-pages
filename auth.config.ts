@@ -5,6 +5,18 @@ export const authConfig = {
     signIn: "/login",
   },
   callbacks: {
+    session: async ({ session, token }) => {
+      if (session?.user) {
+        session.user.id = token.sub || "";
+      }
+      return session;
+    },
+    jwt: async ({ user, token }) => {
+      if (user) {
+        token.uid = user.id;
+      }
+      return token;
+    },
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isInAdmin = nextUrl.pathname.startsWith("/admin");
