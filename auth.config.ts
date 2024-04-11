@@ -1,9 +1,15 @@
 import type { NextAuthConfig } from "next-auth";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export const authConfig = {
   pages: {
     signIn: "/login",
   },
+  adapter: PrismaAdapter(prisma),
+  session: { strategy: "jwt" },
   callbacks: {
     session: async ({ session, token }) => {
       if (session?.user) {

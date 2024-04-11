@@ -1,12 +1,14 @@
 "use server";
 import bcrypt from "bcrypt";
 import { z } from "zod";
-import { sql } from "@vercel/postgres";
+import { PrismaClient } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { auth } from "@/auth";
+
+const prisma = new PrismaClient();
 
 export async function authenticate(
   prevState: string | undefined,
@@ -70,12 +72,14 @@ export async function signUp(prevState: SignUpState, formData: FormData) {
   // Prepare data for insertion into the database
   const { name, email, password, confirmpassword } = validatedFields.data;
   const hashedPassword = await bcrypt.hash(password, 10);
-
   try {
-    await sql`
-      INSERT INTO users (name, email, password)
-      VALUES (${name}, ${email}, ${hashedPassword})
-    `;
+    await prisma.user.create({
+      data: {
+        name: name,
+        email: email,
+        password: hashedPassword,
+      },
+    });
   } catch (error) {
     console.log(error);
     return {
@@ -88,8 +92,15 @@ export async function signUp(prevState: SignUpState, formData: FormData) {
 }
 
 export async function deletePage(id: string) {
+  const session = await auth();
+  const userId = session?.user?.id;
   try {
-    await sql`DELETE FROM pages WHERE id = ${id}`;
+    await prisma.pages.delete({
+      where: {
+        id: id,
+        userId: userId,
+      },
+    });
     revalidatePath("/admin/landing-pages");
     return { message: "Deleted Page." };
   } catch (error) {
@@ -121,7 +132,6 @@ const CreatePage = CreatePageFormSchema.omit({
 
 export async function createPage(prevState: State, formData: FormData) {
   const session = await auth();
-
   const validatedFields = CreatePage.safeParse({
     title: formData.get("title"),
   });
@@ -135,17 +145,22 @@ export async function createPage(prevState: State, formData: FormData) {
 
   // Prepare data for insertion into the database
   const { title } = validatedFields.data;
-  const date = new Date().toISOString().split("T")[0];
   const userId = session?.user?.id;
-  try {
-    await sql`
-      INSERT INTO pages (user_id, title, html, date)
-      VALUES (${userId}, ${title}, '', ${date})
-    `;
-  } catch (error) {
-    return {
-      message: "Database Error: Failed to Create Page.",
-    };
+  if (userId) {
+    try {
+      await prisma.pages.create({
+        data: {
+          title: title,
+          html: "",
+          date: new Date(),
+          userId: userId,
+        },
+      });
+    } catch (error) {
+      return {
+        message: "Database Error: Failed to Create Page.",
+      };
+    }
   }
   revalidatePath("/admin/landing-pages/");
   redirect("/admin/landing-pages/");
@@ -155,14 +170,16 @@ export async function updatePageHtml(id: string, formData: FormData) {
   const html = formData.get("html") as string;
   const session = await auth();
   const userId = session?.user?.id;
-
   try {
-    await sql`
-      UPDATE pages
-      SET html = ${html}
-      WHERE id = ${id}
-      and user_id = ${userId}
-    `;
+    await prisma.pages.update({
+      where: {
+        id: id,
+        userId: userId,
+      },
+      data: {
+        html: html,
+      },
+    });
   } catch (error) {
     return {
       message: "Database Error: Failed to Update Page.",

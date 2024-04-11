@@ -4,14 +4,14 @@
 // However, these types are generated automatically if you're using an ORM such as Prisma.
 export type User = {
   id: string;
-  name: string;
-  email: string;
-  password: string;
+  name: string | null;
+  email: string | null;
+  password: string | null;
 };
 
 export type PagesTable = {
   id: string;
-  user_id: string;
+  userId: string;
   title: string;
   html: string;
   date: string;
@@ -20,7 +20,7 @@ export type PagesTable = {
 
 export type PageForm = {
   id: string;
-  user_id: string;
+  userId: string;
   title: string;
   html: string;
 };
