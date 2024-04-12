@@ -4,8 +4,21 @@ import { PageForm } from "@/app/lib/definitions";
 import Link from "next/link";
 import { Button } from "@/app/ui/button";
 import { updatePageHtml } from "@/app/lib/actions";
+// import Editor from "./lexical-editor";
+import { EditorState } from "lexical";
+import dynamic from "next/dynamic";
+const Editor = dynamic(() => import("@/app/ui/landing-pages/lexical-editor"), {
+  ssr: false,
+});
 
-export default function EditInvoiceForm({ page }: { page: PageForm }) {
+function onChange(editorState: EditorState) {
+  const editorStateJSON = JSON.stringify(editorState);
+  console.log(editorStateJSON);
+  (document.getElementById("editorStateField") as HTMLInputElement).value =
+    editorStateJSON;
+}
+
+export default function EditPageForm({ page }: { page: PageForm }) {
   const updatePageHtmlWithId = updatePageHtml.bind(null, page.id);
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -24,14 +37,16 @@ export default function EditInvoiceForm({ page }: { page: PageForm }) {
           </label>
           <div className="relative mt-2 rounded-md">
             <div className="relative">
-              <textarea
+              <Editor onChange={onChange} editorStateJSON={page.html} />
+              <input type="hidden" name="html" id="editorStateField" value="" />
+              {/* <textarea
                 id="html"
                 name="html"
                 defaultValue={page.html}
                 placeholder="Enter html"
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-2 text-sm outline-2 placeholder:text-gray-500"
                 aria-describedby="html-error"
-              />
+              /> */}
             </div>
           </div>
         </div>
