@@ -1,4 +1,4 @@
-import { UpdatePage, DeletePage } from "@/app/ui/landing-pages/buttons";
+import { UpdatePage, DeletePageModal } from "@/app/ui/landing-pages/buttons";
 import PageState from "@/app/ui/landing-pages/state";
 import { formatDateToLocal } from "@/app/lib/utils";
 import { fetchFilteredPages } from "@/app/lib/data";
@@ -35,7 +35,7 @@ export default async function PagesTable({
                   </div>
                   <div className="flex justify-end gap-2">
                     <UpdatePage id={page.id} />
-                    <DeletePage id={page.id} />
+                    <DeletePageModal id={page.id} />
                   </div>
                 </div>
               </div>
@@ -78,7 +78,7 @@ export default async function PagesTable({
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
                       <UpdatePage id={page.id} />
-                      <DeletePage id={page.id} />
+                      <DeletePageModal id={page.id} />
                     </div>
                   </td>
                 </tr>
