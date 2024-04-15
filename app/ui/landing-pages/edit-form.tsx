@@ -6,10 +6,7 @@ import { Button } from "@/app/ui/button";
 import { updatePageHtml } from "@/app/lib/actions";
 // import Editor from "./lexical-editor";
 import { EditorState } from "lexical";
-import dynamic from "next/dynamic";
-const Editor = dynamic(() => import("@/app/ui/landing-pages/lexical-editor"), {
-  ssr: false,
-});
+import EditorWrapper from "./lexical-editor/EditorWrapper";
 
 function onChange(editorState: EditorState) {
   const editorStateJSON = JSON.stringify(editorState);
@@ -27,6 +24,7 @@ export default function EditPageForm({ page }: { page: PageForm }) {
     updatePageHtmlWithId(formData);
   }
 
+  console.log(page);
   return (
     <form onSubmit={onSubmit}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
@@ -37,7 +35,12 @@ export default function EditPageForm({ page }: { page: PageForm }) {
           </label>
           <div className="relative mt-2 rounded-md">
             <div className="relative">
-              <Editor onChange={onChange} editorStateJSON={page.html} />
+              <div className="editor-shell">
+                <EditorWrapper
+                  onChange={onChange}
+                  editorStateJSON={page.html}
+                />
+              </div>
               <input type="hidden" name="html" id="editorStateField" value="" />
               {/* <textarea
                 id="html"
