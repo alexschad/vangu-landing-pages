@@ -36,7 +36,6 @@ import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 import CodeActionMenuPlugin from "./plugins/CodeActionMenuPlugin";
 import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 import CollapsiblePlugin from "./plugins/CollapsiblePlugin";
-import CommentPlugin from "./plugins/CommentPlugin";
 import ComponentPickerPlugin from "./plugins/ComponentPickerPlugin";
 import ContextMenuPlugin from "./plugins/ContextMenuPlugin";
 import DragDropPaste from "./plugins/DragDropPastePlugin";
@@ -102,8 +101,8 @@ export default function Editor({ onChange }: Props): JSX.Element {
   const text = isCollab
     ? "Enter some collaborative rich text..."
     : isRichText
-    ? "Enter some rich text..."
-    : "Enter some plain text...";
+      ? "Enter some rich text..."
+      : "Enter some plain text...";
   const placeholder = <Placeholder>{text}</Placeholder>;
   const [floatingAnchorElem, setFloatingAnchorElem] =
     useState<HTMLDivElement | null>(null);
@@ -156,9 +155,6 @@ export default function Editor({ onChange }: Props): JSX.Element {
         <KeywordsPlugin />
         <SpeechToTextPlugin />
         <AutoLinkPlugin />
-        <CommentPlugin
-          providerFactory={isCollab ? createWebsocketProvider : undefined}
-        />
         {isRichText ? (
           <>
             {isCollab ? (
