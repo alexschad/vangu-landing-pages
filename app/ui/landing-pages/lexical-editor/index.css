@@ -6,11 +6,15 @@
  *
  */
 
-@import 'https://fonts.googleapis.com/css?family=Reenie+Beanie';
+@import "https://fonts.googleapis.com/css?family=Reenie+Beanie";
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular',
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    ".SFNSText-Regular",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -143,7 +147,7 @@ pre::-webkit-scrollbar-thumb {
 }
 
 .editor-dev-button::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 10px;
   right: 10px;
@@ -191,7 +195,7 @@ pre::-webkit-scrollbar-thumb {
 }
 
 .test-recorder-button::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 8px;
   right: 8px;
@@ -544,10 +548,6 @@ i.user {
   background-image: url(images/icons/user.svg);
 }
 
-i.equation {
-  background-image: url(images/icons/plus-slash-minus.svg);
-}
-
 i.gif {
   background-image: url(images/icons/filetype-gif.svg);
 }
@@ -721,7 +721,9 @@ i.page-break,
   z-index: 100;
   display: block;
   position: fixed;
-  box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1),
+  box-shadow:
+    0 12px 28px 0 rgba(0, 0, 0, 0.2),
+    0 2px 4px 0 rgba(0, 0, 0, 0.1),
     inset 0 0 0 1px rgba(255, 255, 255, 0.5);
   border-radius: 8px;
   min-height: 40px;
@@ -943,11 +945,11 @@ i.page-break,
   transition: transform 0.2s;
 }
 
-.switch button[aria-checked='true'] {
+.switch button[aria-checked="true"] {
   background-color: rgb(24, 119, 242);
 }
 
-.switch button[aria-checked='true'] span {
+.switch button[aria-checked="true"] span {
   transform: translateX(20px);
 }
 
@@ -1567,7 +1569,7 @@ button.toolbar-item.active i {
   padding: 20px 10px;
   position: relative;
   border: 1px solid #e8e8e8;
-  font-family: 'Reenie Beanie';
+  font-family: "Reenie Beanie";
   font-size: 24px;
   border-bottom-right-radius: 60px 5px;
   display: block;
@@ -1575,7 +1577,7 @@ button.toolbar-item.active i {
 }
 
 .sticky-note:after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: -1;
   right: -0px;
@@ -1701,15 +1703,6 @@ button.toolbar-item.active i {
   letter-spacing: -2px;
 }
 
-.editor-equation {
-  cursor: default;
-  user-select: none;
-}
-
-.editor-equation.focused {
-  outline: 2px solid rgb(60, 132, 244);
-}
-
 button.item i {
   opacity: 0.6;
 }
@@ -1730,7 +1723,7 @@ hr {
 }
 
 hr:after {
-  content: '';
+  content: "";
   display: block;
   height: 2px;
   background-color: #ccc;
@@ -1765,7 +1758,7 @@ hr.selected {
 }
 
 .PlaygroundEditorTheme__blockCursor:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   top: -2px;

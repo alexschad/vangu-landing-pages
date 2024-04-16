@@ -33,7 +33,6 @@ import ActionsPlugin from "./plugins/ActionsPlugin";
 import AutocompletePlugin from "./plugins/AutocompletePlugin";
 import AutoEmbedPlugin from "./plugins/AutoEmbedPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
-import CodeActionMenuPlugin from "./plugins/CodeActionMenuPlugin";
 import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 import CollapsiblePlugin from "./plugins/CollapsiblePlugin";
 import ComponentPickerPlugin from "./plugins/ComponentPickerPlugin";
@@ -42,7 +41,6 @@ import DragDropPaste from "./plugins/DragDropPastePlugin";
 import DraggableBlockPlugin from "./plugins/DraggableBlockPlugin";
 import EmojiPickerPlugin from "./plugins/EmojiPickerPlugin";
 import EmojisPlugin from "./plugins/EmojisPlugin";
-import EquationsPlugin from "./plugins/EquationsPlugin";
 import ExcalidrawPlugin from "./plugins/ExcalidrawPlugin";
 import FigmaPlugin from "./plugins/FigmaPlugin";
 import FloatingLinkEditorPlugin from "./plugins/FloatingLinkEditorPlugin";
@@ -52,7 +50,6 @@ import InlineImagePlugin from "./plugins/InlineImagePlugin";
 import KeywordsPlugin from "./plugins/KeywordsPlugin";
 import { LayoutPlugin } from "./plugins/LayoutPlugin/LayoutPlugin";
 import LinkPlugin from "./plugins/LinkPlugin";
-import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
 import MarkdownShortcutPlugin from "./plugins/MarkdownShortcutPlugin";
 import { MaxLengthPlugin } from "./plugins/MaxLengthPlugin";
 import MentionsPlugin from "./plugins/MentionsPlugin";
@@ -181,7 +178,6 @@ export default function Editor({ onChange }: Props): JSX.Element {
             <CodeHighlightPlugin />
             <ListPlugin />
             <CheckListPlugin />
-            <ListMaxIndentLevelPlugin maxDepth={7} />
             <TablePlugin
               hasCellMerge={tableCellMerge}
               hasCellBackgroundColor={tableCellBackgroundColor}
@@ -196,7 +192,6 @@ export default function Editor({ onChange }: Props): JSX.Element {
             <FigmaPlugin />
             <LexicalClickableLinkPlugin disabled={isEditable} />
             <HorizontalRulePlugin />
-            <EquationsPlugin />
             <ExcalidrawPlugin />
             <TabFocusPlugin />
             <TabIndentationPlugin />
@@ -206,7 +201,6 @@ export default function Editor({ onChange }: Props): JSX.Element {
             {floatingAnchorElem && !isSmallWidthViewport && (
               <>
                 <DraggableBlockPlugin anchorElem={floatingAnchorElem} />
-                <CodeActionMenuPlugin anchorElem={floatingAnchorElem} />
                 <FloatingLinkEditorPlugin
                   anchorElem={floatingAnchorElem}
                   isLinkEditMode={isLinkEditMode}

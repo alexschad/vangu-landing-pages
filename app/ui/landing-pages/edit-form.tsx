@@ -8,6 +8,14 @@ import { updatePageHtml } from "@/app/lib/actions";
 import { EditorState } from "lexical";
 import EditorWrapper from "./lexical-editor/EditorWrapper";
 
+// import dynamic from "next/dynamic";
+// const EditorWrapper = dynamic(
+//   () => import("@/app/ui/landing-pages/lexical-editor/EditorWrapper"),
+//   {
+//     ssr: false,
+//   }
+// );
+
 function onChange(editorState: EditorState) {
   const editorStateJSON = JSON.stringify(editorState);
   console.log(editorStateJSON);
