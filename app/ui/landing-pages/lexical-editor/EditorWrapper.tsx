@@ -1,5 +1,4 @@
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
-import dynamic from "next/dynamic";
 import { SharedAutocompleteContext } from "./context/SharedAutocompleteContext";
 import { SharedHistoryContext } from "./context/SharedHistoryContext";
 import { TableContext } from "./plugins/TablePlugin";
@@ -8,6 +7,7 @@ import PlaygroundNodes from "./nodes/PlaygroundNodes";
 import PlaygroundEditorTheme from "./themes/PlaygroundEditorTheme";
 import "./index.css";
 
+import dynamic from "next/dynamic";
 const Editor = dynamic(
   () => import("@/app/ui/landing-pages/lexical-editor/Editor"),
   {

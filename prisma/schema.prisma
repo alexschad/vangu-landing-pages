@@ -85,7 +85,7 @@ model Pages {
   id     String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   userId String
   title  String   @db.VarChar(255)
-  html   String
+  html   String   @db.Text
   state  String   @default("draft") @db.VarChar(255)
   date   DateTime @db.Date
   user   User     @relation(fields: [userId], references: [id], onDelete: Cascade)

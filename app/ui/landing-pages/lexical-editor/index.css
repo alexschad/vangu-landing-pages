@@ -468,10 +468,6 @@ i.figma {
   background-image: url(images/icons/figma.svg);
 }
 
-i.poll {
-  background-image: url(images/icons/card-checklist.svg);
-}
-
 i.columns {
   background-image: url(images/icons/3-columns.svg);
 }
@@ -1434,6 +1430,8 @@ button.action-button:disabled {
 
 .toolbar {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 1px;
   background: #fff;
   padding: 4px;
@@ -1441,7 +1439,6 @@ button.action-button:disabled {
   border-top-right-radius: 10px;
   vertical-align: middle;
   overflow: auto;
-  height: 36px;
   position: sticky;
   top: 0;
   z-index: 2;
@@ -1654,18 +1651,6 @@ button.toolbar-item.active i {
   width: 12px;
   height: 12px;
   background-size: contain;
-}
-
-.excalidraw-button {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  background-color: transparent;
-}
-
-.excalidraw-button.selected {
-  outline: 2px solid rgb(60, 132, 244);
-  user-select: none;
 }
 
 .github-corner:hover .octo-arm {
