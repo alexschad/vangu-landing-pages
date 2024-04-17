@@ -115,40 +115,13 @@ export type State = {
   message?: string | null;
 };
 
-const CreatePageFormSchema = z.object({
-  id: z.string(),
-  userId: z.string(),
-  title: z.string(),
-  state: z.string(),
-  date: z.string(),
-});
-
-const CreatePage = CreatePageFormSchema.omit({
-  id: true,
-  userId: true,
-  state: true,
-  date: true,
-});
-
-export async function createPage(prevState: State, formData: FormData) {
+export async function createPage(title: string) {
   const session = await auth();
-  const validatedFields = CreatePage.safeParse({
-    title: formData.get("title"),
-  });
-  // If form validation fails, return errors early. Otherwise, continue.
-  if (!validatedFields.success) {
-    return {
-      errors: validatedFields.error.flatten().fieldErrors,
-      message: "Missing Fields. Failed to Create Page.",
-    };
-  }
-
-  // Prepare data for insertion into the database
-  const { title } = validatedFields.data;
   const userId = session?.user?.id;
+  let page;
   if (userId) {
     try {
-      await prisma.pages.create({
+      page = await prisma.pages.create({
         data: {
           title: title,
           html: "",
@@ -163,7 +136,11 @@ export async function createPage(prevState: State, formData: FormData) {
     }
   }
   revalidatePath("/admin/landing-pages/");
-  redirect("/admin/landing-pages/");
+  if (page) {
+    redirect(`/admin/landing-pages/${page.id}/edit`);
+  } else {
+    redirect("/admin/landing-pages/");
+  }
 }
 
 export async function updatePageHtml(id: string, formData: FormData) {
