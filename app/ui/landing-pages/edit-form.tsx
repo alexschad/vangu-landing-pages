@@ -6,19 +6,18 @@ import { Button } from "@/app/ui/button";
 import { updatePageHtml } from "@/app/lib/actions";
 // import Editor from "./lexical-editor";
 import { EditorState } from "lexical";
-import EditorWrapper from "./lexical-editor/EditorWrapper";
+// import EditorWrapper from "./lexical-editor/EditorWrapper";
 
-// import dynamic from "next/dynamic";
-// const EditorWrapper = dynamic(
-//   () => import("@/app/ui/landing-pages/lexical-editor/EditorWrapper"),
-//   {
-//     ssr: false,
-//   }
-// );
+import dynamic from "next/dynamic";
+const EditorWrapper = dynamic(
+  () => import("@/app/ui/landing-pages/lexical-editor/EditorWrapper"),
+  {
+    ssr: false,
+  }
+);
 
 function onChange(editorState: EditorState) {
   const editorStateJSON = JSON.stringify(editorState);
-  console.log(editorStateJSON);
   (document.getElementById("editorStateField") as HTMLInputElement).value =
     editorStateJSON;
 }
@@ -32,7 +31,6 @@ export default function EditPageForm({ page }: { page: PageForm }) {
     updatePageHtmlWithId(formData);
   }
 
-  console.log(page);
   return (
     <form onSubmit={onSubmit}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
