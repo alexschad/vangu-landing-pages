@@ -1,7 +1,7 @@
 import Pagination from "@/app/ui/landing-pages/pagination";
 import Search from "@/app/ui/search";
 import Table from "@/app/ui/landing-pages/table";
-import { CreatePage, CreatePageModal } from "@/app/ui/landing-pages/buttons";
+import { CreatePageModal } from "@/app/ui/landing-pages/buttons";
 import { lusitana } from "@/app/ui/fonts";
 import { LandingPagesTableSkeleton } from "@/app/ui/skeletons";
 import { Suspense } from "react";
@@ -31,7 +31,6 @@ export default async function Page({
       </div>
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="Search Pages..." />
-        <CreatePage />
         <CreatePageModal />
       </div>
       <Suspense
