@@ -167,6 +167,15 @@ export async function updatePageHtml(id: string, formData: FormData) {
   redirect("/admin/landing-pages/");
 }
 
+export type PageTitleState = {
+  errors?: {
+    title?: string[];
+    url?: string[];
+    state?: string[];
+  };
+  message?: string | null;
+};
+
 const PageTitleFormSchema = z.object({
   id: z.string(),
   title: z.string(),
@@ -181,7 +190,6 @@ export async function updatePageTitle(
   prevState: State,
   formData: FormData
 ) {
-  const html = formData.get("html") as string;
   const session = await auth();
   const userId = session?.user?.id;
   const { title, url, state } = PageTitleForm.parse({
