@@ -219,3 +219,55 @@ export async function updatePageTitle(
   revalidatePath("/admin/landing-pages/");
   redirect("/admin/landing-pages/");
 }
+
+export type MetaDataState = {
+  errors?: {
+    metatitle?: string[];
+    metadescription?: string[];
+    metakeywords?: string[];
+  };
+  message?: string | null;
+};
+
+const PageMetaFormSchema = z.object({
+  id: z.string(),
+  metatitle: z.string(),
+  metadescription: z.string(),
+  metakeywords: z.string(),
+});
+
+const PageMetaForm = PageMetaFormSchema.omit({ id: true });
+
+export async function updateMetaData(
+  id: string,
+  prevState: MetaDataState,
+  formData: FormData
+) {
+  const session = await auth();
+  const userId = session?.user?.id;
+  const { metatitle, metadescription, metakeywords } = PageMetaForm.parse({
+    metatitle: formData.get("metatitle"),
+    metadescription: formData.get("metadescription"),
+    metakeywords: formData.get("metakeywords"),
+  });
+  try {
+    await prisma.pages.update({
+      where: {
+        id: id,
+        userId: userId,
+      },
+      data: {
+        metatitle: metatitle,
+        metadescription: metadescription,
+        metakeywords: metakeywords,
+      },
+    });
+  } catch (error) {
+    return {
+      message: "Database Error: Failed to Update Page.",
+    };
+  }
+
+  revalidatePath("/admin/landing-pages/");
+  redirect("/admin/landing-pages/");
+}

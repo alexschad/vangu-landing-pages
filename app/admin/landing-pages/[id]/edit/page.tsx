@@ -1,5 +1,6 @@
 import EditPageForm from "@/app/ui/landing-pages/edit-form";
 import TitleForm from "@/app/ui/landing-pages/title-form";
+import MetaDataForm from "@/app/ui/landing-pages/meta-form";
 import Breadcrumbs from "@/app/ui/landing-pages/breadcrumbs";
 import { fetchPageById } from "@/app/lib/data";
 import { notFound } from "next/navigation";
@@ -35,6 +36,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         </div>
         <div className="w-full flex-none md:w-64 md:p-2">
           <TitleForm page={page} />
+          <MetaDataForm page={page} />
         </div>
       </div>
     </main>

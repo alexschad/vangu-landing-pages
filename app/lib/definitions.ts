@@ -13,6 +13,9 @@ export type PagesTable = {
   id: string;
   userId: string;
   title: string;
+  metatitle: string;
+  metadescription: string;
+  metakeywords: string;
   html: string;
   url: string;
   state: string;

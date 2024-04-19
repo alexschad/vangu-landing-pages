@@ -8,9 +8,9 @@ import { PagesTable } from "@/app/lib/definitions";
 
 export default function TitleForm({ page }: { page: PagesTable }) {
   const initialState = { message: null, errors: {} };
-  const updatePageTitlelWithId = updatePageTitle.bind(null, page.id);
+  const updatePageTitleWithId = updatePageTitle.bind(null, page.id);
   const [state, dispatch] = useFormState<PageTitleState, FormData>(
-    updatePageTitlelWithId,
+    updatePageTitleWithId,
     initialState
   );
   const [title, setTitle] = useState(page.title);
@@ -78,7 +78,7 @@ export default function TitleForm({ page }: { page: PagesTable }) {
                 </p>
               ))}
           </div>
-          {/* Invoice Status */}
+          {/* Page State */}
           <fieldset>
             <legend className="mb-2 block text-sm font-medium">State</legend>
             <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3">
