@@ -33,7 +33,6 @@ export default function EditorWrapper({ onChange, editorStateJSON }: Props) {
     onError,
   };
 
-  console.log(editorStateJSON);
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <SharedHistoryContext>
