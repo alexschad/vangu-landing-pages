@@ -166,3 +166,48 @@ export async function updatePageHtml(id: string, formData: FormData) {
   revalidatePath("/admin/landing-pages/");
   redirect("/admin/landing-pages/");
 }
+
+const PageTitleFormSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  url: z.string(),
+  state: z.enum(["draft", "published"]),
+});
+
+const PageTitleForm = PageTitleFormSchema.omit({ id: true });
+
+export async function updatePageTitle(
+  id: string,
+  prevState: State,
+  formData: FormData
+) {
+  const html = formData.get("html") as string;
+  const session = await auth();
+  const userId = session?.user?.id;
+  const { title, url, state } = PageTitleForm.parse({
+    title: formData.get("title"),
+    url: formData.get("url"),
+    state: formData.get("state"),
+  });
+
+  try {
+    await prisma.pages.update({
+      where: {
+        id: id,
+        userId: userId,
+      },
+      data: {
+        title: title,
+        url: url,
+        state: state,
+      },
+    });
+  } catch (error) {
+    return {
+      message: "Database Error: Failed to Update Page.",
+    };
+  }
+
+  revalidatePath("/admin/landing-pages/");
+  redirect("/admin/landing-pages/");
+}

@@ -14,8 +14,8 @@ export type PagesTable = {
   userId: string;
   title: string;
   html: string;
-  date: string;
-  state: "draft" | "published";
+  url: string;
+  state: string;
 };
 
 export type PageForm = {

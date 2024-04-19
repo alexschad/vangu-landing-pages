@@ -4,9 +4,7 @@ import { PageForm } from "@/app/lib/definitions";
 import Link from "next/link";
 import { Button } from "@/app/ui/button";
 import { updatePageHtml } from "@/app/lib/actions";
-// import Editor from "./lexical-editor";
 import { EditorState } from "lexical";
-// import EditorWrapper from "./lexical-editor/EditorWrapper";
 
 import dynamic from "next/dynamic";
 const EditorWrapper = dynamic(

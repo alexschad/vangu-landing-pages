@@ -1,4 +1,5 @@
-import Form from "@/app/ui/landing-pages/edit-form";
+import EditPageForm from "@/app/ui/landing-pages/edit-form";
+import TitleForm from "@/app/ui/landing-pages/title-form";
 import Breadcrumbs from "@/app/ui/landing-pages/breadcrumbs";
 import { fetchPageById } from "@/app/lib/data";
 import { notFound } from "next/navigation";
@@ -28,7 +29,14 @@ export default async function Page({ params }: { params: { id: string } }) {
           },
         ]}
       />
-      <Form page={page} />
+      <div className="flex h-screen flex-col md:flex-row">
+        <div className="flex-grow p-2 md:overflow-y-auto md:p-2">
+          <EditPageForm page={page} />
+        </div>
+        <div className="w-full flex-none md:w-64 md:p-2">
+          <TitleForm page={page} />
+        </div>
+      </div>
     </main>
   );
 }
