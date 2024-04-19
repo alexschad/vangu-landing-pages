@@ -31,7 +31,7 @@ export default function EditPageForm({ page }: { page: PageForm }) {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="rounded-md bg-gray-50 p-4 md:p-6">
+      <div className="rounded-md bg-gray-50 p-4 md:p-4">
         {/* Page HTML */}
         <div className="mb-4">
           <label htmlFor="amount" className="mb-2 block text-sm font-medium">
