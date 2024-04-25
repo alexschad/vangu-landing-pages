@@ -1,8 +1,13 @@
 import Pagination from "@/app/ui/landing-pages/pagination";
-import { UpdatePage, DeletePageModal } from "@/app/ui/landing-pages/buttons";
+import {
+  UpdatePage,
+  DeletePageModal,
+  ViewLivePage,
+} from "@/app/ui/landing-pages/buttons";
 import PageState from "@/app/ui/landing-pages/state";
 import { formatDateToLocal } from "@/app/lib/utils";
 import { fetchFilteredPages, fetchPagesPages } from "@/app/lib/data";
+import { auth } from "@/auth";
 
 export default async function PagesTable({
   query,
@@ -11,6 +16,8 @@ export default async function PagesTable({
   query: string;
   currentPage: number;
 }) {
+  const session = await auth();
+  const userId = session?.user?.id;
   const totalPages = await fetchPagesPages(query);
   const pages = await fetchFilteredPages(query, currentPage);
   return (
@@ -54,6 +61,9 @@ export default async function PagesTable({
                     Date
                   </th>
                   <th scope="col" className="px-3 py-5 font-medium">
+                    Page URL
+                  </th>
+                  <th scope="col" className="px-3 py-5 font-medium">
                     State
                   </th>
                   <th scope="col" className="relative py-3 pl-6 pr-3">
@@ -75,11 +85,15 @@ export default async function PagesTable({
                     <td className="whitespace-nowrap px-3 py-3">
                       {page.date.toLocaleDateString()}
                     </td>
+                    <td className="whitespace-nowrap px-3 py-3">{page.url}</td>
                     <td className="whitespace-nowrap px-3 py-3">
                       <PageState state={page.state} />
                     </td>
                     <td className="whitespace-nowrap py-3 pl-6 pr-3">
                       <div className="flex justify-end gap-3">
+                        {page.state === "published" ? (
+                          <ViewLivePage userId={userId} url={page.url} />
+                        ) : null}
                         <UpdatePage id={page.id} />
                         <DeletePageModal id={page.id} />
                       </div>

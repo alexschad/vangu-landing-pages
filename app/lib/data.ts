@@ -72,3 +72,19 @@ export async function fetchPageById(id: string) {
     throw new Error("Failed to fetch Page.");
   }
 }
+
+export async function getPublicPageData(userid: string, urlname: string) {
+  try {
+    const page = prisma.pages.findFirst({
+      where: {
+        userId: userid,
+        url: urlname,
+        state: "published",
+      },
+    });
+    return page;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch Page.");
+  }
+}

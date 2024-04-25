@@ -7,6 +7,7 @@ import {
   PencilIcon,
   PlusIcon,
   TrashIcon,
+  ArrowTopRightOnSquareIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
@@ -270,5 +271,22 @@ export function DeletePageModal({ id }: { id: string }) {
         <TrashIcon className="w-5" />
       </button>
     </>
+  );
+}
+export function ViewLivePage({
+  url,
+  userId,
+}: {
+  url: string;
+  userId?: string;
+}) {
+  return (
+    <a
+      href={`/public/${userId}/${url}`}
+      target="_blank"
+      className="rounded-md border p-2 hover:bg-gray-100"
+    >
+      <ArrowTopRightOnSquareIcon className="w-5" />
+    </a>
   );
 }
