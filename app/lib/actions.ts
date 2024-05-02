@@ -215,7 +215,7 @@ export async function updatePageTitle(
       message: "Database Error: Failed to Update Page.",
     };
   }
-  // revalidatePath(`/admin/landing-pages/${id}/edit`);
+  revalidatePath(`/admin/landing-pages/${id}/edit`);
   redirect(`/admin/landing-pages/${id}/edit`);
 }
 
@@ -267,6 +267,6 @@ export async function updateMetaData(
     };
   }
 
-  revalidatePath("/admin/landing-pages/");
-  redirect("/admin/landing-pages/");
+  revalidatePath(`/admin/landing-pages/${id}/edit`);
+  redirect(`/admin/landing-pages/${id}/edit`);
 }
