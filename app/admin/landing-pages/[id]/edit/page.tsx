@@ -31,10 +31,10 @@ export default async function Page({ params }: { params: { id: string } }) {
         ]}
       />
       <div className="flex h-screen flex-col md:flex-row">
-        <div className="flex-grow p-2 md:overflow-y-auto md:p-2">
+        <div className="flex-grow md:overflow-y-auto">
           <EditPageForm page={page} />
         </div>
-        <div className="w-full flex-none md:w-64 md:p-2">
+        <div className="w-full flex-none p-2 pt-0 md:w-64 md:p-2 md:pt-0">
           <TitleForm page={page} />
           <MetaDataForm page={page} />
         </div>

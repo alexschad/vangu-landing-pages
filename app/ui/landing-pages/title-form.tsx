@@ -20,7 +20,7 @@ export default function TitleForm({ page }: { page: PagesTable }) {
 
   return (
     <form action={dispatch}>
-      <div className="rounded-md bg-gray-50 p-4 my-2 min-h-80 flex justify-center md:p-4">
+      <div className="rounded-md bg-gray-50 p-4 mb-2 min-h-80 flex justify-center md:p-4">
         <LoadingBlock>
           <div>
             {/* Page Title */}
