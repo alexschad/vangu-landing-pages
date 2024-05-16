@@ -1,3 +1,13 @@
+import {
+  isAfter,
+  isSameDay,
+  parseISO,
+  subDays,
+  subHours,
+  subMinutes,
+  formatDistance,
+} from "date-fns";
+
 export const formatDateToLocal = (
   dateStr: string,
   locale: string = "en-US"
@@ -44,3 +54,11 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+export function humanReadableDate(comparisonDate: Date) {
+  const today = new Date();
+  const result = formatDistance(comparisonDate, today);
+  return `Updated ${result} ago`;
+}
+
+humanReadableDate(new Date());

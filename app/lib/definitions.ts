@@ -26,4 +26,5 @@ export type PageForm = {
   userId: string;
   title: string;
   html: string;
+  modified: Date;
 };

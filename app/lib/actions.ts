@@ -149,7 +149,11 @@ export type HTMLState = {
   message?: string | null;
 };
 
-export async function updatePageHtml(id: string, formData: FormData) {
+export async function updatePageHtml(
+  id: string,
+  prevState: HTMLState,
+  formData: FormData
+) {
   const html = formData.get("html") as string;
   const session = await auth();
   const userId = session?.user?.id;
