@@ -26,13 +26,6 @@ export default function EditPageForm({ page }: { page: PageForm }) {
     initialState
   );
 
-  const saveEvent = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    setIsSaved(true);
-    const form = document.querySelector("#htmlForm") as HTMLFormElement;
-    form.submit();
-  };
-
   const onChange = (editorState: EditorState) => {
     setIsSaved(false);
     const editorStateJSON = JSON.stringify(editorState);
