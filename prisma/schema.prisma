@@ -91,6 +91,7 @@ model Pages {
   metakeywords    String   @default("") @db.VarChar(255)
   html            String   @db.Text
   state           String   @default("draft") @db.VarChar(255)
-  date            DateTime @db.Date
+  created         DateTime @default(now()) @db.Timestamp
+  modified        DateTime @default(now()) @db.Timestamp
   user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

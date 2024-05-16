@@ -125,7 +125,6 @@ export async function createPage(title: string) {
         data: {
           title: title,
           html: "",
-          date: new Date(),
           userId: userId,
         },
       });
@@ -143,6 +142,13 @@ export async function createPage(title: string) {
   }
 }
 
+export type HTMLState = {
+  errors?: {
+    html?: string[];
+  };
+  message?: string | null;
+};
+
 export async function updatePageHtml(id: string, formData: FormData) {
   const html = formData.get("html") as string;
   const session = await auth();
@@ -155,6 +161,7 @@ export async function updatePageHtml(id: string, formData: FormData) {
       },
       data: {
         html: html,
+        modified: new Date(),
       },
     });
   } catch (error) {
@@ -163,8 +170,11 @@ export async function updatePageHtml(id: string, formData: FormData) {
     };
   }
 
-  revalidatePath("/admin/landing-pages/");
-  redirect("/admin/landing-pages/");
+  revalidatePath(`/admin/landing-pages/${id}/edit`);
+  redirect(`/admin/landing-pages/${id}/edit`);
+
+  // revalidatePath("/admin/landing-pages/");
+  // redirect("/admin/landing-pages/");
 }
 
 export type PageTitleState = {

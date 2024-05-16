@@ -41,7 +41,7 @@ export default async function PagesTable({
                   </div>
                   <div className="flex w-full items-center justify-between pt-4">
                     <div>
-                      <p>{formatDateToLocal(page.date.toLocaleDateString())}</p>
+                      <p>{formatDateToLocal(page.created.toLocaleDateString())}</p>
                     </div>
                     <div className="flex justify-end gap-2">
                       <UpdatePage id={page.id} />
@@ -83,7 +83,7 @@ export default async function PagesTable({
                       </div>
                     </td>
                     <td className="whitespace-nowrap px-3 py-3">
-                      {page.date.toLocaleDateString()}
+                      {page.created.toLocaleDateString()}
                     </td>
                     <td className="whitespace-nowrap px-3 py-3">{page.url}</td>
                     <td className="whitespace-nowrap px-3 py-3">

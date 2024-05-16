@@ -23,7 +23,7 @@ export async function fetchFilteredPages(query: string, currentPage: number) {
         userId: userId,
       },
       orderBy: {
-        date: "desc",
+        created: "desc",
       },
       skip: offset,
       take: ITEMS_PER_PAGE,
