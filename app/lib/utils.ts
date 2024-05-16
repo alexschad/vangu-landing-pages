@@ -58,7 +58,7 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
 export function humanReadableDate(comparisonDate: Date) {
   const today = new Date();
   const result = formatDistance(comparisonDate, today);
-  return `Updated ${result} ago`;
+  return `Last saved ${result} ago`;
 }
 
 humanReadableDate(new Date());
