@@ -14,5 +14,5 @@ export function LastModified({ modifiedDate }: { modifiedDate: Date }) {
     };
   }, [modifiedDate]);
 
-  return <div>{modified}</div>;
+  return <div className="flex items-center px-4">{modified}</div>;
 }

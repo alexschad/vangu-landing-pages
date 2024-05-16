@@ -46,9 +46,11 @@ export default function EditPageForm({ page }: { page: PageForm }) {
         className={`rounded-md bg-grey-50 z-[100] ${fullPage ? "absolute top-2 left-2 size-full p-6 md:p-6 pt-8 md:pt-8" : "relative p-4 md:p-4 pt-8 md:pt-8"}`}
       >
         <div className="sticky flex top-0 z-[300] h-10 m-2 w-full5">
-          <LoadingBlock>
-            <SaveButton isSaved={isSaved} setIsSaved={setIsSaved} />
-          </LoadingBlock>
+          <div className="w-14">
+            <LoadingBlock>
+              <SaveButton isSaved={isSaved} setIsSaved={setIsSaved} />
+            </LoadingBlock>
+          </div>
           <LastModified modifiedDate={page.modified} />
           <div className="absolute right-0 top-2">
             {fullPage ? (
