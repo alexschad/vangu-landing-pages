@@ -22,7 +22,7 @@ export default function TitleForm({ page }: { page: PagesTable }) {
     <form action={dispatch}>
       <div className="rounded-md bg-gray-50 p-4 mb-2 min-h-80 flex justify-center md:p-4">
         <LoadingBlock>
-          <div>
+          <div className="w-52">
             {/* Page Title */}
             <div className="mb-4">
               <label htmlFor="title" className="mb-2 block text-sm font-medium">
@@ -86,7 +86,7 @@ export default function TitleForm({ page }: { page: PagesTable }) {
                 <legend className="mb-2 block text-sm font-medium">
                   State
                 </legend>
-                <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3">
+                <div className="rounded-md border border-gray-200 bg-white px-[8px] py-3">
                   <div className="flex gap-2">
                     <div className="flex items-center">
                       <input

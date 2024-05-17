@@ -22,7 +22,7 @@ export default function MetaDataForm({ page }: { page: PagesTable }) {
     <form action={dispatch}>
       <div className="rounded-md min-h-96 bg-gray-50 flex justify-center p-4 md:p-4">
         <LoadingBlock>
-          <div>
+          <div className="w-52">
             {/* Meta Title */}
             <div className="mb-4">
               <label
