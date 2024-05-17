@@ -94,9 +94,12 @@ export default function TitleForm({ page }: { page: PagesTable }) {
                         name="state"
                         type="radio"
                         value="draft"
-                        defaultChecked={pageState === "draft"}
+                        checked={pageState === "draft"}
                         className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
                         aria-describedby="state-error"
+                        onChange={(e) => {
+                          setPageState(e.currentTarget.value);
+                        }}
                       />
                       <label
                         htmlFor="draft"
@@ -111,9 +114,12 @@ export default function TitleForm({ page }: { page: PagesTable }) {
                         name="state"
                         type="radio"
                         value="published"
-                        defaultChecked={pageState === "published"}
+                        checked={pageState === "published"}
                         className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
                         aria-describedby="state-error"
+                        onChange={(e) => {
+                          setPageState(e.currentTarget.value);
+                        }}
                       />
                       <label
                         htmlFor="published"
