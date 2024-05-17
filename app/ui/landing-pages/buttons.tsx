@@ -15,24 +15,40 @@ import { deletePage, createPage } from "@/app/lib/actions";
 
 export function CreatePageModal() {
   const [title, setTitle] = useState("");
-  const [error, setError] = useState("");
+  const [url, setUrl] = useState("");
+  const [titleError, setTitleError] = useState("");
+  const [urlError, setUrlError] = useState("");
   const [open, setOpen] = useState(false);
 
   const setTitleAction = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
-    setError("");
+    setTitleError("");
+    setUrlError("");
   };
+  const setURLAction = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUrl(e.target.value);
+    setTitleError("");
+    setUrlError("");
+  };
+
   const createPageAction = () => {
     if (!title) {
-      setError("Page title required");
+      setTitleError("Page title required");
     }
-    createPage(title);
-    setError("");
+    if (!url) {
+      setUrlError("URL required");
+    }
+    if (!title || !url) return;
+    createPage(title, url);
+    setTitleError("");
+    setUrlError("");
     setTitle("");
+    setUrl("");
     setOpen(false);
   };
   const cancelAction = () => {
-    setError("");
+    setTitleError("");
+    setUrlError("");
     setTitle("");
     setOpen(false);
   };
@@ -86,14 +102,14 @@ export function CreatePageModal() {
                           Create Page
                         </Dialog.Title>
                         <div className="mt-2">
-                          <div className="rounded-md bg-gray-50 p-4 md:p-6">
+                          <div className="rounded-md w-96 p-4 md:p-6">
                             {/* Page Title */}
                             <div className="mb-4">
                               <label
                                 htmlFor="title"
                                 className="mb-2 block text-sm font-medium"
                               >
-                                Page title
+                                Page title *
                               </label>
                               <div className="relative mt-2 rounded-md">
                                 <div className="relative">
@@ -105,6 +121,7 @@ export function CreatePageModal() {
                                     placeholder="Enter Page Title"
                                     className="peer block w-full rounded-md border border-gray-200 py-2 pl-3 text-sm outline-2 placeholder:text-gray-500"
                                     aria-describedby="title-error"
+                                    required
                                   />
                                 </div>
                               </div>
@@ -113,12 +130,49 @@ export function CreatePageModal() {
                                 aria-live="polite"
                                 aria-atomic="true"
                               >
-                                {error && (
+                                {titleError && (
                                   <p
                                     className="mt-2 text-sm text-red-500"
-                                    key={error}
+                                    key={titleError}
                                   >
-                                    {error}
+                                    {titleError}
+                                  </p>
+                                )}
+                              </div>
+                            </div>
+                            {/* Page URL */}
+                            <div className="mb-4">
+                              <label
+                                htmlFor="url"
+                                className="mb-2 block text-sm font-medium"
+                              >
+                                Page url *
+                              </label>
+                              <div className="relative mt-2 rounded-md">
+                                <div className="relative">
+                                  <input
+                                    id="url"
+                                    name="url"
+                                    type="string"
+                                    onChange={setURLAction}
+                                    placeholder="Enter Page URL"
+                                    className="peer block w-full rounded-md border border-gray-200 py-2 pl-3 text-sm outline-2 placeholder:text-gray-500"
+                                    aria-describedby="url-error"
+                                    required
+                                  />
+                                </div>
+                              </div>
+                              <div
+                                id="url-error"
+                                aria-live="polite"
+                                aria-atomic="true"
+                              >
+                                {urlError && (
+                                  <p
+                                    className="mt-2 text-sm text-red-500"
+                                    key={urlError}
+                                  >
+                                    {urlError}
                                   </p>
                                 )}
                               </div>

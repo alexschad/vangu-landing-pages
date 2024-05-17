@@ -115,7 +115,7 @@ export type State = {
   message?: string | null;
 };
 
-export async function createPage(title: string) {
+export async function createPage(title: string, url: string) {
   const session = await auth();
   const userId = session?.user?.id;
   let page;
@@ -124,6 +124,7 @@ export async function createPage(title: string) {
       page = await prisma.pages.create({
         data: {
           title: title,
+          url: url,
           html: "",
           userId: userId,
         },

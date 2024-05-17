@@ -41,6 +41,7 @@ export default function TitleForm({ page }: { page: PagesTable }) {
                     placeholder="Enter Page Title"
                     className="peer block w-full rounded-md border border-gray-200 py-2 pl-3 text-sm outline-2 placeholder:text-gray-500"
                     aria-describedby="title-error"
+                    required
                   />
                 </div>
               </div>
@@ -70,6 +71,7 @@ export default function TitleForm({ page }: { page: PagesTable }) {
                     placeholder="Enter Page URL"
                     className="peer block w-full rounded-md border border-gray-200 py-2 pl-3 text-sm outline-2 placeholder:text-gray-500"
                     aria-describedby="url-error"
+                    required
                   />
                 </div>
               </div>
