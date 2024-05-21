@@ -41,10 +41,9 @@ export default async function Page({ params: { userid, urlname } }: propType) {
     notFound();
   }
 
-  console.log(userid, urlname, page);
   return (
-    <main>
+    <div className="editor-shell">
       <ReadOnlyEditorWrapper stateJSON={page.html} />
-    </main>
+    </div>
   );
 }

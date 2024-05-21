@@ -3,6 +3,7 @@
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import PlaygroundEditorTheme from "@/app/ui/landing-pages/lexical-editor/themes/PlaygroundEditorTheme";
 import PlaygroundNodes from "@/app/ui/landing-pages/lexical-editor//nodes/PlaygroundNodes";
+import "./index.css";
 
 import dynamic from "next/dynamic";
 const Editor = dynamic(
