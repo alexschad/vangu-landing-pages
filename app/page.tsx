@@ -11,7 +11,7 @@ export default function Page() {
         <Logo />
       </div>
       <div className="mt-4 flex flex-col gap-4 md:flex-col">
-        <div className="flex flex-row justify-center gap-3 rounded-lg bg-gray-50 px-6 py-2 md:w-100 md:px-10">
+        <div className="flex flex-col-reverse justify-center gap-3rounded-lg bg-gray-50 px-6 py-2 md:w-100 md:px-10 md:flex-row">
           <div className="flex flex-col justify-center gap-3">
             <p
               className={`${lusitana.className} text-xl text-gray-800 md:text-2xl md:leading-normal`}
@@ -39,7 +39,7 @@ export default function Page() {
           <div className="flex items-center justify-center p-6 md:py-12">
             <Image
               src="/promo1.jpg"
-              width={1000}
+              width={1500}
               height={760}
               className="hidden md:block"
               alt="Screenshots of the admin project showing desktop version"
@@ -53,11 +53,11 @@ export default function Page() {
             />
           </div>
         </div>
-        <div className="flex flex-row justify-center gap-3rounded-lg bg-gray-50 px-6 py-2 md:w-100 md:px-10">
+        <div className="flex flex-col justify-center gap-3rounded-lg bg-gray-50 px-6 py-2 md:w-100 md:px-10 md:flex-row">
           <div className="flex items-center justify-center p-6 md:py-12">
             <Image
               src="/promo2.jpg"
-              width={1000}
+              width={1500}
               height={760}
               className="hidden md:block"
               alt="Screenshots of the admin project showing desktop version"
@@ -93,7 +93,7 @@ export default function Page() {
             </Link>
           </div>
         </div>
-        <div className="flex flex-row justify-center gap-6 rounded-lg bg-gray-50 px-6 py-2 md:w-100 md:px-10">
+        <div className="flex flex-col-reverse justify-center gap-3rounded-lg bg-gray-50 px-6 py-2 md:w-100 md:px-10 md:flex-row">
           <div className="flex flex-col justify-center gap-3">
             <p
               className={`${lusitana.className} text-xl text-gray-800 md:text-2xl md:leading-normal`}
@@ -119,7 +119,7 @@ export default function Page() {
           <div className="flex items-center justify-center p-6 md:py-12">
             <Image
               src="/promo3.jpg"
-              width={1000}
+              width={1500}
               height={760}
               className="hidden md:block"
               alt="Screenshots of the admin project showing desktop version"
