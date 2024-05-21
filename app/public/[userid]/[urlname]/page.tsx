@@ -1,7 +1,15 @@
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
 import { getPublicPageData } from "@/app/lib/data";
-import ReadonlyEditorWrapper from "@/app/ui/landing-pages/lexical-editor/ReadOnlyEditorWrapper";
+// import ReadonlyEditorWrapper from "@/app/ui/landing-pages/lexical-editor/ReadOnlyEditorWrapper";
+import dynamic from "next/dynamic";
+
+const ReadOnlyEditorWrapper = dynamic(
+  () => import("@/app/ui/landing-pages/lexical-editor/ReadOnlyEditorWrapper"),
+  {
+    ssr: false,
+  }
+);
 
 type propType = {
   params: {
@@ -36,7 +44,7 @@ export default async function Page({ params: { userid, urlname } }: propType) {
   console.log(userid, urlname, page);
   return (
     <main>
-      <ReadonlyEditorWrapper stateJSON={page.html} />
+      <ReadOnlyEditorWrapper stateJSON={page.html} />
     </main>
   );
 }
