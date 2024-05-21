@@ -90,7 +90,7 @@ export function CreatePageModal() {
                     <div className="sm:flex sm:items-start">
                       <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
                         <ExclamationTriangleIcon
-                          className="h-6 w-6 text-blue-600"
+                          className="h-6 w-6 text-blue-500"
                           aria-hidden="true"
                         />
                       </div>
@@ -186,7 +186,7 @@ export function CreatePageModal() {
                     <button
                       type="submit"
                       onClick={createPageAction}
-                      className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
+                      className="inline-flex w-full justify-center rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
                     >
                       Create Page
                     </button>
@@ -207,7 +207,7 @@ export function CreatePageModal() {
       </Transition.Root>
       <button
         onClick={() => setOpen(true)}
-        className="flex h-10 items-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        className="flex h-10 items-center rounded-lg bg-blue-500 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
       >
         <span className="hidden md:block">Create Page</span>{" "}
         <PlusIcon className="h-5 md:ml-4" />
