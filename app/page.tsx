@@ -20,7 +20,7 @@ export default function Page() {
                 Welcome to PageForge: Your Ultimate Landing Page Solution!
               </strong>
             </p>
-            <p>
+            <p className="text-xl">
               This is the example for the Revolutionize your online presence
               with our cutting-edge Landing Page Builder! Say goodbye to
               complicated design tools and hello to effortless, stunning landing
@@ -76,7 +76,7 @@ export default function Page() {
             >
               <strong>Drag and Drop Editor</strong>
             </p>
-            <p>
+            <p className="text-xl">
               With our drag-and-drop editor, crafting your perfect landing page
               is as simple as point, click, and customize. No coding skills
               required! But we don&apos;t stop at aesthetics. Our platform is
@@ -100,7 +100,7 @@ export default function Page() {
             >
               <strong>Drive Traffic from social Media</strong>
             </p>
-            <p>
+            <p className="text-xl">
               Whether you&apos;re driving traffic from social media, email
               marketing, or PPC campaigns, rest assured your message will shine
               through beautifully. Join the ranks of successful businesses and
